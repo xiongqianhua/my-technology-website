@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 First, run the development server:
-
+For Next.js, Node.js version >= v18.17.0
 ```bash
 npm run dev
 # or
