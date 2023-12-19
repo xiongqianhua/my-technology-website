@@ -106,7 +106,7 @@ const items: MenuProps['items'] = [
   },
 ];
 const MenuList: React.FC = () => {
-  const [current, setCurrent] = useState('home');
+  const [current, setCurrent] = useState('techDoc');
 
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click ', e);
