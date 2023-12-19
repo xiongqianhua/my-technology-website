@@ -53,7 +53,7 @@ const LayoutComponent: React.FC<WrapperProps> = ({ LeftComponent, RightComponent
         <div className="App">
         <Layout style={layoutStyle}>
           <Header style={headStyle}>
-            <div className={styles.headLeft}><img className={styles.logoBox} src='../public/favicon.ico'></img><span className={styles.webName}>Xiongqianhua's technology website</span></div>
+            <div className={styles.headLeft}><span className={styles.logoBox}></span><span className={styles.webName}>Xiongqianhua's technology website</span></div>
             <MenuList MenuKey={MenuKey}/>
           </Header>
           <Layout>
