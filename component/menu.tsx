@@ -68,9 +68,9 @@ const items: MenuProps['items'] = [
       icon: <LinkOutlined />,
     },
   ];
-  interface props {
+interface props {
     MenuKey: string;
-  }
+}
 const MenuList: React.FC<props >= ({MenuKey}) => {
     const [current, setCurrent] = useState( MenuKey || '');
     const onClick: MenuProps['onClick'] = (e) => {
@@ -81,7 +81,6 @@ const MenuList: React.FC<props >= ({MenuKey}) => {
         window.location.href = '/'+ e.key
       }
     };
-  
     return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
 };
 export default MenuList

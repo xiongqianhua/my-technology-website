@@ -8,13 +8,13 @@ const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   minHeight: "80vh",
   lineHeight: '120px',
-  backgroundColor: '#fff',
+  backgroundColor: 'rgba(0,0,0,0.2)',
 };
 
 const siderStyle: React.CSSProperties = {
   textAlign: 'center',
   lineHeight: '120px',
-  backgroundColor: '#fff',
+  backgroundColor: 'rgba(0,0,0,0.05)',
 };
 
 const footerStyle: React.CSSProperties = {
