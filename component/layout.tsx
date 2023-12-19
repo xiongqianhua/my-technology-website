@@ -3,6 +3,8 @@ import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { Layout} from 'antd';
 import MenuList from '../component/menu';
+import Image from 'next/image'
+import logo from '../public/favicon.ico';
 const { Header, Footer, Sider, Content } = Layout;
 const contentStyle: React.CSSProperties = {
   textAlign: 'center',
@@ -53,7 +55,9 @@ const LayoutComponent: React.FC<WrapperProps> = ({ LeftComponent, RightComponent
         <div className="App">
         <Layout style={layoutStyle}>
           <Header style={headStyle}>
-            <div className={styles.headLeft}><span className={styles.logoBox}></span><span className={styles.webName}>Xiongqianhua's technology website</span></div>
+            <div className={styles.headLeft}>
+              <Image src={logo} alt="Picture of the author" className={styles.webName}/>
+              <span className={styles.webName}>Xiongqianhua's technology website</span></div>
             <MenuList MenuKey={MenuKey}/>
           </Header>
           <Layout>
