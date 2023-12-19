@@ -10,7 +10,7 @@ const contentStyle: React.CSSProperties = {
   textAlign: 'center',
   minHeight: "80vh",
   lineHeight: '120px',
-  backgroundColor: 'rgba(0,0,0,0.2)',
+  padding: "2vw",
 };
 
 const siderStyle: React.CSSProperties = {
@@ -56,7 +56,7 @@ const LayoutComponent: React.FC<WrapperProps> = ({ LeftComponent, RightComponent
         <Layout style={layoutStyle}>
           <Header style={headStyle}>
             <div className={styles.headLeft}>
-              <Image src={logo} alt="Picture of the author" className={styles.webName}/>
+              <Image src={logo} alt="Picture of the author" className={styles.logoBox}/>
               <span className={styles.webName}>Xiongqianhua's technology website</span></div>
             <MenuList MenuKey={MenuKey}/>
           </Header>
