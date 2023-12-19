@@ -1,9 +1,15 @@
 .logoBox{
+    display: inline-block;
     width: 3vw;
     height: 3vw;
     background: url('../public/favicon.ico');
     background-size: 100% 100%;
     border-radius: 1vw;
+    margin-right: 10px;
+}
+.headLeft{
+    display: flex;
+    align-items: center;
 }
 .webName{
     font-size: 1.5vw;
