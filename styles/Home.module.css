@@ -12,3 +12,6 @@
 .webName{
     font-size: 1.5vw;
 }
+.mapId{
+    min-height: 60vh;
+}

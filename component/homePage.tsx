@@ -1,9 +1,8 @@
-/*
- * @Author: qianhua.xiong
- */
 import React from 'react';
 import UserInfo from '../component/userInfo';
 import { Anchor } from 'antd';
+import IntroductionInfo from '../component/introductionInfo.jsx';
+import {TechnicalDocumentationReact,TechnicalDocumentationVue,TechnicalDocumentationOther,TechnicalDocumentationNode} from './technical-documentation';
 const handleClick = (
     e: React.MouseEvent<HTMLElement>,
     link: {
@@ -20,41 +19,62 @@ const LeftComponent:React.FC = ()=>{
     onClick={handleClick}
     items={[
       {
-        key: '1',
-        href: '#components-anchor-demo-basic',
-        title: 'Basic demo',
+        key: 'personal-resume',
+        href: '#personal-resume',
+        title: '个人简历',
       },
       {
-        key: '2',
-        href: '#components-anchor-demo-static',
-        title: 'Static demo',
+        key: 'self-introduction',
+        href: '#self-introduction',
+        title: '个人介绍',
       },
       {
-        key: '3',
-        href: '#api',
-        title: 'API',
+        key: 'technical-documentation',
+        href: '#technical-documentation',
+        title: '技术文档',
         children: [
           {
-            key: '4',
-            href: '#anchor-props',
-            title: 'Anchor Props',
+            key: 'technical-documentation-react',
+            href: '#technical-documentation-react',
+            title: 'react',
           },
           {
-            key: '5',
-            href: '#link-props',
-            title: 'Link Props',
+            key: 'technical-documentation-vue',
+            href: '#technical-documentation-vue',
+            title: 'vue',
+          },
+          {
+            key: 'technical-documentation-node',
+            href: '#technical-documentation-node',
+            title: 'node',
+          },
+          {
+            key: 'technical-documentation-other',
+            href: '#technical-documentation-other',
+            title: '其它',
           },
         ],
       },
     ]}
     style={{
-        width:"70%",
-        margin:"0 auto"
+        width:"10vw",
+        position:"fixed",
+        top:"15vh",
+        left:"2vw",
     }}
   />
 }
 const RightComponent:React.FC = ()=>{
-    return <UserInfo/>
+    return <div id="homePageContent">
+      <UserInfo/>
+      <IntroductionInfo/>
+        <div id= "technical-documentation">
+          <TechnicalDocumentationReact/>
+          <TechnicalDocumentationVue/>
+          <TechnicalDocumentationNode/>
+          <TechnicalDocumentationOther/>
+        </div>
+      </div>
 }
 export {
     LeftComponent,

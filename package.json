@@ -9,16 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ant-design/cssinjs": "^1.18.1",
-    "antd": "^5.12.2",
+    "@ant-design/cssinjs": "1.17.2",
+    "@tweenjs/tween.js": "^21.0.0",
+    "antd": "5.11.1",
+    "d3": "^7.8.5",
+    "dat.gui": "^0.7.9",
+    "gray-matter": "^4.0.3",
+    "gsap": "^3.12.2",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "three": "0.143.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/three": "^0.159.0",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "typescript": "^5"
