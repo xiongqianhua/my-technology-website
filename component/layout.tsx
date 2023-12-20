@@ -61,7 +61,7 @@ const LayoutComponent: React.FC<WrapperProps> = ({ LeftComponent, RightComponent
             <MenuList MenuKey={MenuKey}/>
           </Header>
           <Layout>
-            <Sider width="25%" style={siderStyle}>
+            <Sider width="15%" style={siderStyle}>
               <LeftComponent/>
             </Sider>
             <Content style={contentStyle}><RightComponent/></Content>

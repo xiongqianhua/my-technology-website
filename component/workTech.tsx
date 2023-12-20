@@ -2,7 +2,7 @@
  * @Author: qianhua.xiong
  */
 import React from 'react';
-import { Divider, List, Typography } from 'antd';
+import { List, Typography } from 'antd';
 
 const data = [
   'Racing car sprays burning fuel into crowd.',
@@ -13,19 +13,16 @@ const data = [
 ];
 
 const WorkTech: React.FC = () => (
-  <>
     <List
-      header={<div>work technology</div>}
-      footer={<div>Footer</div>}
       bordered
       dataSource={data}
       renderItem={(item) => (
         <List.Item>
-          <Typography.Text mark>[ITEM]</Typography.Text> {item}
+          <Typography.Text mark>[javascript]</Typography.Text> {item}
         </List.Item>
       )}
+      style={{ width: "100%" }}
     />
-  </>
 );
 
 export default WorkTech;
