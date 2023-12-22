@@ -1,337 +1,88 @@
-/*
- * @Author: qianhua.xiong
- */
-import React, { useEffect, useState } from 'react';
-import { Avatar,Divider, Button, List, Skeleton } from 'antd';
-
-interface DataType {
-  gender?: string;
-  name: {
-    title?: string;
-    first?: string;
-    last?: string;
-  };
-  email?: string;
-  picture: {
-    large?: string;
-    medium?: string;
-    thumbnail?: string;
-  };
-  nat?: string;
-  loading: boolean;
-}
-
-const count = 3;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
+import React from 'react';
+import { Divider, Button, List,} from 'antd';
 
 const TechnicalDocumentationReact: React.FC = () => {
-  const [initLoading, setInitLoading] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<DataType[]>([]);
-  const [list, setList] = useState<DataType[]>([]);
-
-  useEffect(() => {
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        setInitLoading(false);
-        setData(res.results);
-        setList(res.results);
-      });
-  }, []);
-
-  const onLoadMore = () => {
-    setLoading(true);
-    setList(
-      data.concat([...new Array(count)].map(() => ({ loading: true, name: {}, picture: {} }))),
-    );
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        const newData = data.concat(res.results);
-        setData(newData);
-        setList(newData);
-        setLoading(false);
-        // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-        // In real scene, you can using public method of react-virtualized:
-        // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-        window.dispatchEvent(new Event('resize'));
-      });
-  };
-
-  const loadMore =
-    !initLoading && !loading ? (
-      <div
-        style={{
-          textAlign: 'center',
-          marginTop: 12,
-          height: 32,
-          lineHeight: '32px',
-        }}
-      >
-        <Button onClick={onLoadMore}>loading more</Button>
-      </div>
-    ) : null;
-
+  const reactData = ['fiber','HOC高阶组件','hooks','hooks的底层原理','ReactHooks模拟生命周期',
+  'setState的用法','useEffect、useLayoutEffect和useInsertionEffect','useEffect','useMemo,ReactMemo,useCallBack','useReducer']
   return (
     <div id = "technical-documentation-react">
         <Divider orientation="center">react</Divider>
         <List
-            className="demo-loadmore-list"
-            loading={initLoading}
-            itemLayout="horizontal"
-            loadMore={loadMore}
-            dataSource={list}
-            renderItem={(item) => (
-                <List.Item
-                actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
-                >
-                <Skeleton avatar title={false} loading={item.loading} active>
-                    <List.Item.Meta
-                    avatar={<Avatar src={item.picture.large} />}
-                    title={<a href="https://ant.design">{item.name?.last}</a>}
-                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                    />
-                    <div>content</div>
-                </Skeleton>
-                </List.Item>
-            )}
-            />
+              bordered
+              dataSource={reactData}
+              renderItem={(item,index) => (
+                  <List.Item>
+                      <Button type="link" style={{margin:"0 auto"}}  onClick={()=>openWindow(item)}>{index}.{item}</Button>
+                  </List.Item>
+              )}
+              style={{ width: "100%"}}
+          />
     </div>
-   
   );
 };
-const TechnicalDocumentationOther: React.FC = () => {
-    const [initLoading, setInitLoading] = useState(true);
-    const [loading, setLoading] = useState(false);
-    const [data, setData] = useState<DataType[]>([]);
-    const [list, setList] = useState<DataType[]>([]);
-  
-    useEffect(() => {
-      fetch(fakeDataUrl)
-        .then((res) => res.json())
-        .then((res) => {
-          setInitLoading(false);
-          setData(res.results);
-          setList(res.results);
-        });
-    }, []);
-  
-    const onLoadMore = () => {
-      setLoading(true);
-      setList(
-        data.concat([...new Array(count)].map(() => ({ loading: true, name: {}, picture: {} }))),
-      );
-      fetch(fakeDataUrl)
-        .then((res) => res.json())
-        .then((res) => {
-          const newData = data.concat(res.results);
-          setData(newData);
-          setList(newData);
-          setLoading(false);
-          // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-          // In real scene, you can using public method of react-virtualized:
-          // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-          window.dispatchEvent(new Event('resize'));
-        });
-    };
-  
-    const loadMore =
-      !initLoading && !loading ? (
-        <div
-          style={{
-            textAlign: 'center',
-            marginTop: 12,
-            height: 32,
-            lineHeight: '32px',
-          }}
-        >
-          <Button onClick={onLoadMore}>loading more</Button>
-        </div>
-      ) : null;
-  
+
+const TechnicalDocumentationOther: React.FC =  () => {
+    const otherData = [
+        'http1-http2-http3',
+        'import-require',
+    ];
     return (
       <div id = "technical-documentation-other">
           <Divider orientation="center">其它</Divider>
           <List
-              className="demo-loadmore-list"
-              loading={initLoading}
-              itemLayout="horizontal"
-              loadMore={loadMore}
-              dataSource={list}
-              renderItem={(item) => (
-                  <List.Item
-                  actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
-                  >
-                  <Skeleton avatar title={false} loading={item.loading} active>
-                      <List.Item.Meta
-                      avatar={<Avatar src={item.picture.large} />}
-                      title={<a href="https://ant.design">{item.name?.last}</a>}
-                      description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                      />
-                      <div>content</div>
-                  </Skeleton>
-                  </List.Item>
+              bordered
+              dataSource={otherData}
+              renderItem={(item,index) => (
+                <List.Item>
+                    <Button type="link" style={{margin:"0 auto"}} onClick={()=>openWindow(item)}>{index}.{item}</Button>
+                </List.Item>
               )}
-              />
+              style={{ width: "100%" }}
+          />
       </div>
-     
     );
 };
 const TechnicalDocumentationVue: React.FC = () => {
-    const [initLoading, setInitLoading] = useState(true);
-    const [loading, setLoading] = useState(false);
-    const [data, setData] = useState<DataType[]>([]);
-    const [list, setList] = useState<DataType[]>([]);
-  
-    useEffect(() => {
-      fetch(fakeDataUrl)
-        .then((res) => res.json())
-        .then((res) => {
-          setInitLoading(false);
-          setData(res.results);
-          setList(res.results);
-        });
-    }, []);
-  
-    const onLoadMore = () => {
-      setLoading(true);
-      setList(
-        data.concat([...new Array(count)].map(() => ({ loading: true, name: {}, picture: {} }))),
-      );
-      fetch(fakeDataUrl)
-        .then((res) => res.json())
-        .then((res) => {
-          const newData = data.concat(res.results);
-          setData(newData);
-          setList(newData);
-          setLoading(false);
-          // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-          // In real scene, you can using public method of react-virtualized:
-          // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-          window.dispatchEvent(new Event('resize'));
-        });
-    };
-  
-    const loadMore =
-      !initLoading && !loading ? (
-        <div
-          style={{
-            textAlign: 'center',
-            marginTop: 12,
-            height: 32,
-            lineHeight: '32px',
-          }}
-        >
-          <Button onClick={onLoadMore}>loading more</Button>
-        </div>
-      ) : null;
-  
+   const vueData = ['vue的双向绑定原理']
     return (
       <div id = "technical-documentation-vue">
           <Divider orientation="center">vue</Divider>
           <List
-              className="demo-loadmore-list"
-              loading={initLoading}
-              itemLayout="horizontal"
-              loadMore={loadMore}
-              dataSource={list}
-              renderItem={(item) => (
-                  <List.Item
-                  actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
-                  >
-                  <Skeleton avatar title={false} loading={item.loading} active>
-                      <List.Item.Meta
-                      avatar={<Avatar src={item.picture.large} />}
-                      title={<a href="https://ant.design">{item.name?.last}</a>}
-                      description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                      />
-                      <div>content</div>
-                  </Skeleton>
-                  </List.Item>
+              bordered
+              dataSource={vueData}
+              renderItem={(item,index) => (
+                <List.Item>
+                    <Button type="link" style={{margin:"0 auto"}} onClick={()=>openWindow(item)}>{index}.{item}</Button>
+                </List.Item>
               )}
-              />
+              style={{ width: "100%" }}
+          />
       </div>
-     
     );
 };
 const TechnicalDocumentationNode: React.FC = () => {
-    const [initLoading, setInitLoading] = useState(true);
-    const [loading, setLoading] = useState(false);
-    const [data, setData] = useState<DataType[]>([]);
-    const [list, setList] = useState<DataType[]>([]);
-  
-    useEffect(() => {
-      fetch(fakeDataUrl)
-        .then((res) => res.json())
-        .then((res) => {
-          setInitLoading(false);
-          setData(res.results);
-          setList(res.results);
-        });
-    }, []);
-  
-    const onLoadMore = () => {
-      setLoading(true);
-      setList(
-        data.concat([...new Array(count)].map(() => ({ loading: true, name: {}, picture: {} }))),
-      );
-      fetch(fakeDataUrl)
-        .then((res) => res.json())
-        .then((res) => {
-          const newData = data.concat(res.results);
-          setData(newData);
-          setList(newData);
-          setLoading(false);
-          // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-          // In real scene, you can using public method of react-virtualized:
-          // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-          window.dispatchEvent(new Event('resize'));
-        });
-    };
-  
-    const loadMore =
-      !initLoading && !loading ? (
-        <div
-          style={{
-            textAlign: 'center',
-            marginTop: 12,
-            height: 32,
-            lineHeight: '32px',
-          }}
-        >
-          <Button onClick={onLoadMore}>loading more</Button>
-        </div>
-      ) : null;
+    const NodeData = ['RESTfulAPI']
   
     return (
       <div id = "technical-documentation-node">
           <Divider orientation="center">node</Divider>
           <List
-              className="demo-loadmore-list"
-              loading={initLoading}
-              itemLayout="horizontal"
-              loadMore={loadMore}
-              dataSource={list}
-              renderItem={(item) => (
-                  <List.Item
-                  actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
-                  >
-                  <Skeleton avatar title={false} loading={item.loading} active>
-                      <List.Item.Meta
-                      avatar={<Avatar src={item.picture.large} />}
-                      title={<a href="https://ant.design">{item.name?.last}</a>}
-                      description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                      />
-                      <div>content</div>
-                  </Skeleton>
-                  </List.Item>
+              bordered
+              dataSource={NodeData}
+              renderItem={(item,index) => (
+                <List.Item>
+                    <Button type="link" style={{margin:"0 auto"}} onClick={()=>openWindow(item)}>{index}.{item}</Button>
+                </List.Item>
               )}
-              />
+              style={{ width: "100%" }}
+          />
       </div>
      
     );
 };
+const openWindow = (item:string)=>{
+  window.open('/blog/' + item)
+}
 export {
     TechnicalDocumentationReact,
     TechnicalDocumentationVue,
