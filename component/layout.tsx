@@ -1,3 +1,6 @@
+/*
+ * @Author: qianhua.xiong
+ */
 import React from 'react';
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
@@ -57,7 +60,7 @@ const LayoutComponent: React.FC<WrapperProps> = ({ LeftComponent, RightComponent
           <Header style={headStyle}>
             <div className={styles.headLeft}>
               <Image src={logo} alt="Picture of the author" className={styles.logoBox}/>
-              <span className={styles.webName}>Xiongqianhua's technology website</span></div>
+              <span className={styles.webName}>My technology website</span></div>
             <MenuList MenuKey={MenuKey}/>
           </Header>
           <Layout>
@@ -66,7 +69,7 @@ const LayoutComponent: React.FC<WrapperProps> = ({ LeftComponent, RightComponent
             </Sider>
             <Content style={contentStyle}><RightComponent/></Content>
           </Layout>
-          <Footer style={footerStyle}>Xiongqianhua's technology website</Footer>
+          <Footer style={footerStyle}>My technology website</Footer>
         </Layout>
         </div>
       </main>
